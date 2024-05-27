@@ -1,7 +1,7 @@
-package com.gurunelee.lockpoc;
+package com.gurunelee.lockpoc.coupon;
 
-import com.gurunelee.lockpoc.entity.Coupon;
-import com.gurunelee.lockpoc.entity.CouponRepository;
+import com.gurunelee.lockpoc.coupon.entity.Coupon;
+import com.gurunelee.lockpoc.coupon.entity.CouponRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

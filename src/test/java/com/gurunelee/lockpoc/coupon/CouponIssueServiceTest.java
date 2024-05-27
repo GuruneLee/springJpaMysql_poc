@@ -1,9 +1,8 @@
-package com.gurunelee.lockpoc;
+package com.gurunelee.lockpoc.coupon;
 
-import com.gurunelee.lockpoc.entity.Coupon;
-import com.gurunelee.lockpoc.entity.CouponRepository;
-import com.gurunelee.lockpoc.entity.CouponUserRepository;
-import org.junit.jupiter.api.Assertions;
+import com.gurunelee.lockpoc.coupon.entity.Coupon;
+import com.gurunelee.lockpoc.coupon.entity.CouponRepository;
+import com.gurunelee.lockpoc.coupon.entity.CouponUserRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

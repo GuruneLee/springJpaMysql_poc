@@ -1,4 +1,4 @@
-package com.gurunelee.lockpoc.entity;
+package com.gurunelee.lockpoc.coupon.entity;
 
 import jakarta.persistence.*;
 
