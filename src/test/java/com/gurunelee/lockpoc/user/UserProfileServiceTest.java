@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Description;
+import org.springframework.test.annotation.Rollback;
 
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
@@ -43,6 +44,7 @@ class UserProfileServiceTest {
     }
 
     @Test
+    @Rollback
     @Description("@DynamicUpdate 없으면 update 쿼리가 모든 컬럼을 업데이트한다.")
     void updateWithDynamicUpdate() {
         // given
@@ -54,26 +56,20 @@ class UserProfileServiceTest {
         );
 
         // when
-        UserProfile select1 = userProfileService.getUserProfile(userKey);
-        UserProfile select2 = userProfileService.getUserProfile(userKey);
-
         executor.execute(() -> {
-            select1.setName("gurunelee_mod1");
-            userProfileRepository.save(select1);
+            userProfileService.update(userKey, "gurunelee_mod1", "hello_mod");
             countDownLatch.countDown();
         });
 
         executor.execute(() -> {
-            select2.setIntroduce("hello_mod2");
-            userProfileRepository.save(select2);
+            userProfileService.update(userKey, "gurunelee_mod", "hello_mod2");
             countDownLatch.countDown();
         });
 
         try {
             countDownLatch.await();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-            return;
+        } catch (InterruptedException ignore) {
+            
         }
 
         // then
